@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    >
+
+    <!--    <TextView-->
+    <!--        android:id="@+id/questionTextView"-->
+    <!--        android:layout_width="wrap_content"-->
+    <!--        android:layout_height="wrap_content"-->
+    <!--        android:layout_marginTop="300dp"-->
+    <!--        android:text="Are you feeling Itchy Node?"-->
+    <!--        android:textSize="24sp"-->
+    <!--        android:textStyle="bold"-->
+    <!--        app:layout_constraintEnd_toEndOf="parent"-->
+    <!--        app:layout_constraintHorizontal_bias="0.534"-->
+    <!--        app:layout_constraintStart_toStartOf="parent"-->
+    <!--        app:layout_constraintTop_toTopOf="parent" />-->
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:padding="16dp"
+        android:background="#FAFAFA"
+        tools:context=".MainActivity">
+
+        <TextView
+            android:id="@+id/slider_label"
+            android:layout_width="250dp"
+            android:layout_height="36dp"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentBottom="true"
+            android:layout_marginStart="85dp"
+            android:layout_marginTop="210dp"
+            android:layout_marginEnd="55dp"
+            android:layout_marginBottom="460dp"
+            android:text="Are You Having Runny Nose?"
+            android:textColor="#333"
+            android:textSize="18sp" />
+
+        <com.google.android.material.slider.Slider
+            android:id="@+id/severity_slider"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_marginTop="255dp"
+            android:stepSize="1"
+            android:valueFrom="0"
+            android:valueTo="2"
+
+            app:labelBehavior="gone"
+
+            app:thumbRadius="12dp"
+
+            app:trackHeight="8dp"
+            android:contentDescription="SeveritySlider"/>
+
+        <LinearLayout
+            android:id="@+id/slider_labels"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/severity_slider"
+            android:orientation="horizontal"
+            android:layout_marginTop="8dp"
+            android:layout_centerHorizontal="true">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="None"
+                android:textAlignment="center"
+                android:textColor="#333"
+                android:textSize="14sp" />
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Mild"
+                android:textAlignment="center"
+                android:textColor="#333"
+                android:textSize="14sp" />
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Severe"
+                android:textAlignment="center"
+                android:textColor="#333"
+                android:textSize="14sp" />
+
+        </LinearLayout>
+
+        <Button
+            android:id="@+id/button_next"
+            android:layout_width="wrap_content"
+            android:layout_height="58dp"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentBottom="true"
+            android:layout_marginStart="132dp"
+            android:layout_marginTop="350dp"
+            android:layout_marginEnd="132dp"
+            android:layout_marginBottom="300dp"
+            android:text="Next" />
+
+        <ImageView
+            android:id="@+id/imageView"
+            android:layout_width="329dp"
+            android:layout_height="394dp"
+            android:layout_above="@+id/slider_label"
+            android:layout_alignParentEnd="true"
+            android:layout_marginEnd="-100dp"
+            android:layout_marginBottom="-265dp"
+            android:src="@drawable/ques2"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.509"
+            app:layout_constraintStart_toStartOf="parent"
+            tools:layout_editor_absoluteY="-132dp" />
+    </RelativeLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
