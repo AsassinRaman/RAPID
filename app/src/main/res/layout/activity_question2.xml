@@ -43,7 +43,7 @@
             android:textSize="18sp" />
 
         <com.google.android.material.slider.Slider
-            android:id="@+id/severity_slider"
+            android:id="@+id/severity_slider2"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_alignParentTop="true"
@@ -63,7 +63,7 @@
             android:id="@+id/slider_labels"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@id/severity_slider"
+            android:layout_below="@id/severity_slider2"
             android:orientation="horizontal"
             android:layout_marginTop="8dp"
             android:layout_centerHorizontal="true">

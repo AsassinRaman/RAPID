@@ -4,17 +4,10 @@ import android.content.Context
 import android.content.Intent
 import android.content.SharedPreferences
 import android.os.Bundle
-import android.widget.TextView
 import android.widget.Toast
-import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.ViewCompat
-import androidx.core.view.WindowInsetsCompat
 import com.example.rapid.databinding.ActivityQuestion1Binding
-import com.example.rapid.databinding.ActivityWelcomeBinding
-import com.google.android.gms.common.data.DataHolder
 import com.google.android.material.slider.Slider
-import java.io.Serializable
 
 class Question1 : AppCompatActivity() {
     lateinit var binding: ActivityQuestion1Binding
@@ -37,7 +30,7 @@ class Question1 : AppCompatActivity() {
         sharedPreferences = getSharedPreferences("MyAppPreferences", Context.MODE_PRIVATE)
 
         // Initialize the Slider
-        severitySlider = findViewById(R.id.severity_slider)
+        severitySlider = findViewById(R.id.severity_slider1)
 
         // Set the initial value from SharedPreferences if available
         val storedValue = sharedPreferences.getFloat("severitySliderValue", 0f)

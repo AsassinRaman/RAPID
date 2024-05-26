@@ -37,6 +37,7 @@ class Result : AppCompatActivity() {
         val selectedOption = options[randomIndex]
         binding.txtResult.setText(selectedOption)
 
+        //Question 1
         // Initialize the TextView
         valueTextView = findViewById(R.id.txt_itching)
 
@@ -53,6 +54,40 @@ class Result : AppCompatActivity() {
         }
         // Display the value
         valueTextView.text = "Stored value: $severityDescription"
+
+        //Question 2
+        // Initialize the TextView
+        valueTextView = findViewById(R.id.txt_itching)
+
+        // Retrieve the stored value from SharedPreferences
+        val storedValue2 = sharedPreferences.getFloat("severitySliderValue", 0f)
+
+        // Map the numerical value to the corresponding descriptive string
+        val severityDescription2 = when (storedValue2.toInt()) {
+            0 -> "None"
+            1 -> "Mild"
+            2 -> "Severe"
+            else -> "Unknown"
+        }
+        // Display the value
+        valueTextView.text = "Stored value: $severityDescription2"
+
+        //Question 3
+        // Initialize the TextView
+        valueTextView = findViewById(R.id.txt_itching)
+
+        // Retrieve the stored value from SharedPreferences
+        val storedValue3 = sharedPreferences.getFloat("severitySliderValue", 0f)
+
+        // Map the numerical value to the corresponding descriptive string
+        val severityDescription3 = when (storedValue2.toInt()) {
+            0 -> "None"
+            1 -> "Mild"
+            2 -> "Severe"
+            else -> "Unknown"
+        }
+        // Display the value
+        valueTextView.text = "Stored value: $severityDescription3"
 
     }
 

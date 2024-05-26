@@ -129,19 +129,20 @@ class SelectCity : AppCompatActivity() {
         fusedLocationClient.lastLocation.addOnSuccessListener { location: Location? ->
             location?.let {
                 fetchWeather(it.latitude, it.longitude)
+                fetchAqi(it.latitude,it.longitude)
             }
         }
     }
 
     private fun fetchWeather(lat: Double, lon: Double) {
         val retrofit = Retrofit.Builder()
-            .baseUrl("https://api.openweathermap.org/data/2.5/")
+            .baseUrl("https://api.openweathermap.org/data/2.5/weather?lat={$lat}&lon={$lon}&appid={28fe549a5ff3df3902db31608079ed70}")
             .addConverterFactory(GsonConverterFactory.create())
             .build()
 
         val service = retrofit.create(WeatherService::class.java)
         val weatherCall = service.getCurrentWeather(lat, lon, apiKey)
-        val aqiCall = service.getAirQuality(lat, lon, apiKey)
+
 
         // Fetch Weather Data
         weatherCall.enqueue(object: Callback<WeatherResponse> {
@@ -172,6 +173,17 @@ class SelectCity : AppCompatActivity() {
                 }
             }
         })
+
+
+    }
+
+    private fun fetchAqi(lat: Double, lon: Double) {
+        val retrofit = Retrofit.Builder()
+            .baseUrl("http://api.openweathermap.org/data/2.5/air_pollution/forecast?lat={$lat}&lon={$lon}&appid={28fe549a5ff3df3902db31608079ed70}")
+            .addConverterFactory(GsonConverterFactory.create())
+            .build()
+        val service = retrofit.create(WeatherService::class.java)
+        val aqiCall = service.getAirQuality(lat, lon, apiKey)
         // Fetch AQI Data
         aqiCall.enqueue(object : Callback<AqiResponse> {
             override fun onResponse(
@@ -191,6 +203,6 @@ class SelectCity : AppCompatActivity() {
                 t.printStackTrace()
             }
         })
-    }
+        }
 
 }

@@ -11,7 +11,7 @@ import com.google.android.material.slider.Slider
 
 class Question2 : AppCompatActivity() {
     lateinit var binding: ActivityQuestion2Binding
-    private lateinit var severitySlider: Slider
+    private lateinit var severitySlider2: Slider
     private lateinit var sharedPreferences: SharedPreferences
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -27,21 +27,21 @@ class Question2 : AppCompatActivity() {
         sharedPreferences = getSharedPreferences("MyAppPreferences", Context.MODE_PRIVATE)
 
         // Initialize the Slider
-        severitySlider = findViewById(R.id.severity_slider)
+        severitySlider2 = findViewById(R.id.severity_slider2)
 
         // Set the initial value from SharedPreferences if available
-        val storedValue = sharedPreferences.getFloat("severitySliderValue", 0f)
-        severitySlider.value = storedValue
+        val storedValue2 = sharedPreferences.getFloat("severitySliderValue", 0f)
+        severitySlider2.value = storedValue2
 
         // Set listener to capture changes
-        severitySlider.addOnChangeListener { slider, value, fromUser ->
+        severitySlider2.addOnChangeListener { slider, value, fromUser ->
             // Store the value in SharedPreferences
-            storeSliderValue(value)
+            storeSliderValue2(value)
             // Optionally, display the value or handle it as needed
             Toast.makeText(this, "Selected value: $value", Toast.LENGTH_SHORT).show()
         }
     }
-    private fun storeSliderValue(value: Float) {
+    private fun storeSliderValue2(value: Float) {
         with(sharedPreferences.edit()) {
             putFloat("severitySliderValue", value)
             apply()
