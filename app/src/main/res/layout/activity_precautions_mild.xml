@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background ="@drawable/footer">
+
+    <TextView
+        android:id="@+id/heading"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Allergy Prediction: Mild"
+        android:textStyle="bold"
+        android:textSize="22sp"
+        android:textColor="#FFA500"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:padding="16dp"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:gravity="center_horizontal"
+        android:padding="16dp"
+        android:layout_below="@id/heading"
+        android:layout_marginTop="16dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Mild allergy symptoms detected. Please follow the precautions below."
+            android:textSize="18sp"
+            android:textColor="#FFFFFF"
+            android:paddingBottom="24dp"
+            android:gravity="center_horizontal"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Precautions:"
+            android:textStyle="bold"
+            android:textSize="20sp"
+            android:textColor="#AF47D2"
+            android:paddingBottom="12dp"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="• Avoid exposure to known allergens such as pollen, dust, or pet dander."
+            android:textSize="16sp"
+            android:paddingBottom="8dp"
+            android:gravity="center_horizontal"
+            android:textAlignment="viewStart"
+            tools:ignore="RtlCompat"
+            android:textColor="#FFFFFF"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center_horizontal"
+            android:paddingBottom="8dp"
+            android:text="• Use air purifiers to reduce any indoor allergen Particles."
+            android:textAlignment="viewStart"
+            android:textColor="#FFFFFF"
+            android:textSize="16sp"
+            tools:ignore="RtlCompat" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="• Wash your hands and face regularly to remove allergens."
+            android:textSize="16sp"
+            android:paddingBottom="8dp"
+            android:gravity="center_horizontal"
+            android:textAlignment="viewStart"
+            tools:ignore="RtlCompat"
+            android:textColor="#FFFFFF"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="• Take over-the-counter antihistamines if necessary, following your doctor's advice."
+            android:textSize="16sp"
+            android:paddingBottom="8dp"
+            android:gravity="center_horizontal"
+            android:textAlignment="viewStart"
+            tools:ignore="RtlCompat"
+            android:textColor="#FFFFFF"/>
+    </LinearLayout>
+</RelativeLayout>

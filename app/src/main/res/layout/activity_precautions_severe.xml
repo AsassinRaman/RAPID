@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background ="@drawable/footer">
+
+    <TextView
+        android:id="@+id/heading"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Allergy Prediction: Severe"
+        android:textStyle="bold"
+        android:textSize="22sp"
+        android:textColor="#FF0000"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:padding="16dp"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:gravity="center_horizontal"
+        android:padding="16dp"
+        android:layout_below="@id/heading"
+        android:layout_marginTop="16dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Severe allergy symptoms detected. Immediate precautions are necessary."
+            android:textSize="18sp"
+            android:textColor="#FFFFFF"
+            android:paddingBottom="24dp"
+            android:gravity="center_horizontal"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Precautions:"
+            android:textStyle="bold"
+            android:textSize="20sp"
+            android:textColor="#AF47D2"
+            android:paddingBottom="12dp"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="• Consult with an allergist or healthcare provider for personalized advice."
+            android:textSize="16sp"
+            android:paddingBottom="8dp"
+            android:gravity="center_horizontal"
+            android:textAlignment="viewStart"
+            tools:ignore="RtlCompat"
+            android:textColor="#FFFFFF"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center_horizontal"
+            android:paddingBottom="8dp"
+            android:text="• Carry an epinephrine auto-injector if prescribed by a doctor."
+            android:textAlignment="viewStart"
+            android:textSize="16sp"
+            tools:ignore="RtlCompat"
+            android:textColor="#FFFFFF"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="• Avoid any outdoor activities during high pollen seasons."
+            android:textSize="16sp"
+            android:paddingBottom="8dp"
+            android:gravity="center_horizontal"
+            android:textAlignment="viewStart"
+            tools:ignore="RtlCompat"
+            android:textColor="#FFFFFF"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="• Keep windows and doors closed to prevent outdoor allergens from entering your home."
+            android:textSize="16sp"
+            android:paddingBottom="8dp"
+            android:gravity="center_horizontal"
+            android:textAlignment="viewStart"
+            tools:ignore="RtlCompat"
+            android:textColor="#FFFFFF"/>
+    </LinearLayout>
+</RelativeLayout>
