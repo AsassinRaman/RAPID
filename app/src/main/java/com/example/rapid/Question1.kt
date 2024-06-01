@@ -42,8 +42,19 @@ class Question1 : AppCompatActivity() {
             storeSliderValue(value)
             // Optionally, display the value or handle it as needed
             Toast.makeText(this, "Selected value: $value", Toast.LENGTH_SHORT).show()
+
+            intent.putExtra("Ques1",value)
+        }
+
+        binding.buttonNext.setOnClickListener {
+            val severityValue = severitySlider.value
+            val intent = Intent(this, Question2::class.java)
+            intent.putExtra("Question1Severity", severityValue)
+            startActivity(intent)
+            finish()
         }
     }
+
 
     private fun storeSliderValue(value: Float) {
         with(sharedPreferences.edit()) {

@@ -4,29 +4,30 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#FFFFFF">
+    android:background ="#000000">
 
 
     <ImageView
         android:id="@+id/imageView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="152dp"
+        android:layout_marginTop="256dp"
         android:src="@drawable/abp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        />
 
     <TextView
         android:id="@+id/resultTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="232dp"
+        android:layout_marginTop="120dp"
         android:text="Your Allergy Prediction is"
-        android:textColor="#000000"
+        android:textColor="#FFFFFF"
         android:textSize="24sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.401"
+        app:layout_constraintHorizontal_bias="0.496"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -34,33 +35,57 @@
         android:id="@+id/txt_result"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="308dp"
+        android:layout_marginTop="208dp"
         android:textSize="24sp"
         android:textStyle="bold"
+        android:textColor="#FFFFFF"
+        android:text="Result"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.464"
+        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <TextView
-        android:id="@+id/txt_itching"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="69dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txt_result" />
 
-    <Button
-        android:id="@+id/btnYourData"
-        android:layout_width="wrap_content"
+    <LinearLayout
+        android:id="@+id/linearLayout"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:text="Your Data"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_marginTop="324dp"
+        android:orientation="horizontal"
+        android:padding="16dp"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txt_itching"
-        app:layout_constraintVertical_bias="0.777" />
+        app:layout_constraintTop_toTopOf="parent"
+        android:gravity="center_horizontal">
+
+        <Button
+            android:id="@+id/btnYourData"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="See Data"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/imageView"
+            app:layout_constraintVertical_bias="0.142" />
+
+        <Space
+            android:layout_width="30dp"
+            android:layout_height="wrap_content" />
+
+
+        <Button
+            android:id="@+id/btnPrecautions"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Take Precautions"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/imageView"
+            app:layout_constraintVertical_bias="0.142" />
+    </LinearLayout>
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

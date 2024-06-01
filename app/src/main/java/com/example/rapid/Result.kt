@@ -1,24 +1,85 @@
 package com.example.rapid
 
-import android.content.Context
 import android.content.Intent
 import android.os.Bundle
+import android.widget.Button
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import com.example.rapid.databinding.ActivityResultBinding
-import kotlin.random.Random
+
+//enum class Severity {
+//    NONE, MILD, SEVERE
+//}
 
 class Result : AppCompatActivity() {
     private lateinit var binding: ActivityResultBinding
-    private lateinit var valueTextView: TextView
-
+    private lateinit var txtResult: TextView
+    private lateinit var btnPrecaution: Button
+//    private lateinit var btnYourData: Button
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityResultBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+//        // List of options
+//        val options = listOf("None", "Mild", "Severe")
+//
+//        // Generate a random index within the range of options list
+//        val randomIndex = Random.nextInt(0, options.size)
+//
+//
+//        // Select and display the random option
+//        val selectedOption = options[randomIndex]
+
+        val question1Severity = intent.getFloatExtra("Question1Severity", 0f)
+        val question2Severity = intent.getFloatExtra("Question2Severity", 0f)
+        val question3Severity = intent.getFloatExtra("Question3Severity", 0f)
+
+        // Convert severity values to a prediction result
+        val result = calculatePrediction(question1Severity, question2Severity, question3Severity)
+        binding.txtResult.text = result
+
+       // Other initialization code...
+
+
+//        binding.txtResult.setText(selectedOption)
+        txtResult = findViewById(R.id.txt_result)
+
         binding.btnYourData.setOnClickListener{
             startActivity(Intent(this,InputData::class.java))
+        }
+
+        btnPrecaution = findViewById(R.id.btnPrecautions)
+        btnPrecaution.setOnClickListener {
+            val result = txtResult.text.toString()
+
+            when (result.lowercase()) {
+                "none" -> {
+                    // Navigate to NoneActivity
+                    val intent = Intent(this, PrecautionsNone::class.java)
+                    startActivity(intent)
+                }
+                "mild" -> {
+                    // Navigate to MildActivity
+                    val intent = Intent(this, PrecautionsMild::class.java)
+                    startActivity(intent)
+                }
+                else -> {
+                    // Navigate to OtherActivity
+                    val intent = Intent(this, PrecautionsSevere::class.java)
+                    startActivity(intent)
+                }
+            }
+        }
+
+
+    }
+    private fun calculatePrediction(q1: Float, q2: Float, q3: Float): String {
+        val totalSeverity = q1 + q2 + q3
+        return when {
+            totalSeverity == 0f -> "None"
+            totalSeverity <= 1f -> "Mild"
+            else -> "Severe"
         }
 
 
@@ -26,69 +87,7 @@ class Result : AppCompatActivity() {
 //        binding.txtItching.setText("itching")
 
 
-        // List of options
-        val options = listOf("None", "Mild", "Severe")
-
-        // Generate a random index within the range of options list
-        val randomIndex = Random.nextInt(0, options.size-1)
 
 
-        // Select and display the random option
-        val selectedOption = options[randomIndex]
-        binding.txtResult.setText(selectedOption)
-
-        //Question 1
-        // Initialize the TextView
-        valueTextView = findViewById(R.id.txt_itching)
-
-        // Retrieve the stored value from SharedPreferences
-        val sharedPreferences = getSharedPreferences("MyAppPreferences", Context.MODE_PRIVATE)
-        val storedValue = sharedPreferences.getFloat("severitySliderValue", 0f)
-
-        // Map the numerical value to the corresponding descriptive string
-        val severityDescription = when (storedValue.toInt()) {
-            0 -> "None"
-            1 -> "Mild"
-            2 -> "Severe"
-            else -> "Unknown"
-        }
-        // Display the value
-        valueTextView.text = "Stored value: $severityDescription"
-
-        //Question 2
-        // Initialize the TextView
-        valueTextView = findViewById(R.id.txt_itching)
-
-        // Retrieve the stored value from SharedPreferences
-        val storedValue2 = sharedPreferences.getFloat("severitySliderValue", 0f)
-
-        // Map the numerical value to the corresponding descriptive string
-        val severityDescription2 = when (storedValue2.toInt()) {
-            0 -> "None"
-            1 -> "Mild"
-            2 -> "Severe"
-            else -> "Unknown"
-        }
-        // Display the value
-        valueTextView.text = "Stored value: $severityDescription2"
-
-        //Question 3
-        // Initialize the TextView
-        valueTextView = findViewById(R.id.txt_itching)
-
-        // Retrieve the stored value from SharedPreferences
-        val storedValue3 = sharedPreferences.getFloat("severitySliderValue", 0f)
-
-        // Map the numerical value to the corresponding descriptive string
-        val severityDescription3 = when (storedValue2.toInt()) {
-            0 -> "None"
-            1 -> "Mild"
-            2 -> "Severe"
-            else -> "Unknown"
-        }
-        // Display the value
-        valueTextView.text = "Stored value: $severityDescription3"
-
-    }
-
+}
 }

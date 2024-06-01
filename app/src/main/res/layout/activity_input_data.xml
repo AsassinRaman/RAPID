@@ -5,26 +5,96 @@
     android:id="@+id/RunInput"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#FFFFFF"
+    android:background ="@drawable/footer"
     tools:context=".InputData">
 
     <TextView
-        android:id="@+id/txt_data"
+        android:id="@+id/heading"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="150dp"
-        android:layout_marginTop="163dp"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:padding="16dp"
         android:text="Your Data"
+        android:textColor="#FFFFFF"
+        android:textSize="22sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.052" />
+
+    <TextView
+        android:id="@+id/sneezing"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+
+        android:layout_marginTop="32dp"
+        android:text="TextView"
+        android:textColor="#FFFFFF"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/runny" />
+
+    <TextView
+        android:id="@+id/itching"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="157dp"
+        android:text="TextView"
+        android:textColor="#FFFFFF"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/textView2"
+        android:id="@+id/runny"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="26dp"
-        android:layout_marginTop="78dp"
+        android:layout_marginStart="32dp"
+
+        android:layout_marginTop="32dp"
         android:text="TextView"
-        app:layout_constraintStart_toStartOf="@+id/txt_data"
-        app:layout_constraintTop_toBottomOf="@+id/txt_data" />
+        android:textColor="#FFFFFF"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/itching" />
+
+    <TextView
+        android:id="@+id/Wind"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="112dp"
+        android:layout_marginTop="32dp"
+        android:text="TextView"
+        android:textColor="#FFFFFF"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.013"
+        app:layout_constraintStart_toEndOf="@+id/sneezing"
+        app:layout_constraintTop_toBottomOf="@+id/Hum" />
+
+    <TextView
+        android:id="@+id/AQI"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="60dp"
+        android:layout_marginEnd="36dp"
+        android:text="TextView"
+        android:textColor="#FFFFFF"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/itching"
+        app:layout_constraintTop_toBottomOf="@+id/heading" />
+
+    <TextView
+        android:id="@+id/Hum"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="112dp"
+        android:layout_marginTop="32dp"
+        android:text="TextView"
+        android:textColor="#FFFFFF"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.013"
+        app:layout_constraintStart_toEndOf="@+id/runny"
+        app:layout_constraintTop_toBottomOf="@+id/AQI" />
 </androidx.constraintlayout.widget.ConstraintLayout>

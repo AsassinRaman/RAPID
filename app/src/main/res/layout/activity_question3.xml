@@ -22,7 +22,7 @@
         android:id="@+id/relativeLayout2"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:background="#FAFAFA"
+        android:background ="@drawable/footer"
         android:padding="16dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -43,7 +43,7 @@
             android:layout_marginEnd="55dp"
             android:layout_marginBottom="460dp"
             android:text="Are You Sneezing Often?"
-            android:textColor="#333"
+            android:textColor="#FFFFFF"
             android:textSize="18sp" />
 
         <com.google.android.material.slider.Slider
@@ -79,7 +79,7 @@
                 android:layout_weight="1"
                 android:text="None"
                 android:textAlignment="center"
-                android:textColor="#333"
+                android:textColor="#FFFFFF"
                 android:textSize="14sp" />
 
             <TextView
@@ -88,7 +88,7 @@
                 android:layout_weight="1"
                 android:text="Mild"
                 android:textAlignment="center"
-                android:textColor="#333"
+                android:textColor="#FFFFFF"
                 android:textSize="14sp" />
 
             <TextView
@@ -97,7 +97,7 @@
                 android:layout_weight="1"
                 android:text="Severe"
                 android:textAlignment="center"
-                android:textColor="#333"
+                android:textColor="#FFFFFF"
                 android:textSize="14sp" />
 
         </LinearLayout>

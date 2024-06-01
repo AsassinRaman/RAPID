@@ -12,3 +12,7 @@ data class Main(
 data class Wind(
     val speed: Float
 )
+
+//data class aqi(
+//    val index: Float
+//)

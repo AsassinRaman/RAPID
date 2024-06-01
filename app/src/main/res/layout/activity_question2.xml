@@ -23,7 +23,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:padding="16dp"
-        android:background="#FAFAFA"
+        android:background ="@drawable/footer"
         tools:context=".MainActivity">
 
         <TextView
@@ -39,7 +39,7 @@
             android:layout_marginEnd="55dp"
             android:layout_marginBottom="460dp"
             android:text="Are You Having Runny Nose?"
-            android:textColor="#333"
+            android:textColor="#FFFFFF"
             android:textSize="18sp" />
 
         <com.google.android.material.slider.Slider
@@ -51,11 +51,8 @@
             android:stepSize="1"
             android:valueFrom="0"
             android:valueTo="2"
-
             app:labelBehavior="gone"
-
             app:thumbRadius="12dp"
-
             app:trackHeight="8dp"
             android:contentDescription="SeveritySlider"/>
 
@@ -74,7 +71,7 @@
                 android:layout_weight="1"
                 android:text="None"
                 android:textAlignment="center"
-                android:textColor="#333"
+                android:textColor="#FFFFFF"
                 android:textSize="14sp" />
 
             <TextView
@@ -83,7 +80,7 @@
                 android:layout_weight="1"
                 android:text="Mild"
                 android:textAlignment="center"
-                android:textColor="#333"
+                android:textColor="#FFFFFF"
                 android:textSize="14sp" />
 
             <TextView
@@ -92,7 +89,7 @@
                 android:layout_weight="1"
                 android:text="Severe"
                 android:textAlignment="center"
-                android:textColor="#333"
+                android:textColor="#FFFFFF"
                 android:textSize="14sp" />
 
         </LinearLayout>

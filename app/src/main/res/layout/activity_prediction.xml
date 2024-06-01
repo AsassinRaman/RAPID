@@ -2,7 +2,7 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#FFFFFF"
+    android:background ="@drawable/footer"
     android:gravity="center">
 
     <ImageView
@@ -24,7 +24,9 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:indeterminate="true"
-        android:layout_centerInParent="true" />
+        android:layout_centerInParent="true"
+        android:indeterminateTintMode="src_atop"
+        android:indeterminateTint="@color/white"/>
 
     <TextView
         android:id="@+id/loadingText"
@@ -34,7 +36,7 @@
         android:layout_marginTop="16dp"
         android:text="Prediction Incoming!"
         android:textSize="18sp"
-        android:textColor="#000000"
+        android:textColor="#FFFFFF"
         android:layout_centerHorizontal="true"
         android:textStyle="bold"/>
 

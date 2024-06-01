@@ -4,16 +4,19 @@ import AqiResponse
 import WeatherResponse
 import WeatherService
 import android.Manifest
+import android.annotation.SuppressLint
 import android.content.Intent
 import android.content.pm.PackageManager
 import android.location.Location
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
+import android.util.Log
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
+import com.example.rapid.databinding.ActivitySelectCityBinding
 import com.google.android.gms.location.FusedLocationProviderClient
 import com.google.android.gms.location.LocationServices
 import retrofit2.Call
@@ -24,18 +27,16 @@ import kotlin.random.Random
 
 class SelectCity : AppCompatActivity() {
 
-
+    private lateinit var fusedLocationClient: FusedLocationProviderClient
     private val LOCATION_PERMISSION_REQUEST_CODE = 1
     private val LOADING_DURATION = Random.nextLong(5000, 10000)
-
-    private lateinit var fusedLocationClient: FusedLocationProviderClient
     private val apiKey = "28fe549a5ff3df3902db31608079ed70"
-
+    lateinit var binding: ActivitySelectCityBinding
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_select_city)
+        binding= ActivitySelectCityBinding.inflate(layoutInflater)
+        setContentView(binding.root)
 
-        fusedLocationClient = LocationServices.getFusedLocationProviderClient(this)
         if (ContextCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED)
         {
             ActivityCompat.requestPermissions(
@@ -45,21 +46,9 @@ class SelectCity : AppCompatActivity() {
             )
         } else
         {
-            getLocationAndWeather()
+//            getLocationAndWeather()
+            startLoading()
         }
-
-
-//        if (ContextCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION)
-//            != PackageManager.PERMISSION_GRANTED
-//        ) {
-//            ActivityCompat.requestPermissions(
-//                this,
-//                arrayOf(Manifest.permission.ACCESS_FINE_LOCATION),
-//                LOCATION_PERMISSION_REQUEST_CODE
-//            )
-//        } else {
-//            startLoading()
-//        }
     }
 
     override fun onRequestPermissionsResult(
@@ -70,8 +59,9 @@ class SelectCity : AppCompatActivity() {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults)
         if (requestCode == LOCATION_PERMISSION_REQUEST_CODE) {
             if ((grantResults.isNotEmpty() && grantResults[0] == PackageManager.PERMISSION_GRANTED)) {
+                fusedLocationClient = LocationServices.getFusedLocationProviderClient(this)
+//                getLocationAndWeather()
                 startLoading()
-                getLocationAndWeather()
             } else {
                 // Handle the case where permission was denied
                 showPermissionDeniedDialog()
@@ -79,16 +69,6 @@ class SelectCity : AppCompatActivity() {
             }
         }
     }
-
-    private fun startLoading() {
-        Handler(Looper.getMainLooper()).postDelayed({
-            // Start the next activity after 10 seconds
-            val intent = Intent(this, Question1::class.java)
-            startActivity(intent)
-            finish()
-        }, LOADING_DURATION)
-    }
-
     private fun showPermissionDeniedDialog() {
         AlertDialog.Builder(this)
             .setTitle("Location Permission Required")
@@ -107,25 +87,21 @@ class SelectCity : AppCompatActivity() {
             }
             .show()
 
+
+
     }
 
+    private fun startLoading() {
+        Handler(Looper.getMainLooper()).postDelayed({
+            // Start the next activity after 10 seconds
+            val intent = Intent(this, Question1::class.java)
+            startActivity(intent)
+            finish()
+        }, LOADING_DURATION)
+    }
 
-
-
-
-
+    @SuppressLint("MissingPermission")
     private fun getLocationAndWeather() {
-        if (ActivityCompat.checkSelfPermission(
-                this,
-                Manifest.permission.ACCESS_FINE_LOCATION
-            ) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(
-                this,
-                Manifest.permission.ACCESS_COARSE_LOCATION
-            ) != PackageManager.PERMISSION_GRANTED
-        ) {
-            showPermissionDeniedDialog()
-            return
-        }
         fusedLocationClient.lastLocation.addOnSuccessListener { location: Location? ->
             location?.let {
                 fetchWeather(it.latitude, it.longitude)
@@ -136,7 +112,7 @@ class SelectCity : AppCompatActivity() {
 
     private fun fetchWeather(lat: Double, lon: Double) {
         val retrofit = Retrofit.Builder()
-            .baseUrl("https://api.openweathermap.org/data/2.5/weather?lat={$lat}&lon={$lon}&appid={28fe549a5ff3df3902db31608079ed70}")
+            .baseUrl("https://api.openweathermap.org/data/2.5/weather?lat=$lat&lon=$lon&appid=28fe549a5ff3df3902db31608079ed70")
             .addConverterFactory(GsonConverterFactory.create())
             .build()
 
@@ -154,15 +130,15 @@ class SelectCity : AppCompatActivity() {
                     val weather = p1.body()
                     weather?.let {
                         // Store weather details locally or update UI
-                        var intent=Intent(this@SelectCity,InputData::class.java)
-                        intent.putExtra("name",it.name)
+                        var intent=Intent(this@SelectCity,Prediction::class.java)
+//                        intent.putExtra("name",it.name)
                         intent.putExtra("temp",it.main.temp)
                         intent.putExtra("humidity",it.main.humidity)
                         intent.putExtra("wind",it.wind.speed)
-
-
-
-//                        println("Weather in ${it.name}: ${it.main.temp}°C, Humidity: ${it.main.humidity}%")
+                        // Log the values to verify they are correct
+                        Log.d("SelectCity", "name: ${it.name}, temp: ${it.main.temp}, humidity: ${it.main.humidity}, wind: ${it.wind.speed}")
+                        startActivity(intent)  // Start the next activity
+//                      println("Weather in ${it.name}: ${it.main.temp}°C, Humidity: ${it.main.humidity}%")
                     }
                 }
             }
@@ -170,6 +146,7 @@ class SelectCity : AppCompatActivity() {
             override fun onFailure(call: Call<WeatherResponse>, t: Throwable?) {
                 if (t != null) {
                     t.printStackTrace()
+                    Log.e("WeatherService", "Error fetching weather data", t)
                 }
             }
         })
@@ -179,7 +156,7 @@ class SelectCity : AppCompatActivity() {
 
     private fun fetchAqi(lat: Double, lon: Double) {
         val retrofit = Retrofit.Builder()
-            .baseUrl("http://api.openweathermap.org/data/2.5/air_pollution/forecast?lat={$lat}&lon={$lon}&appid={28fe549a5ff3df3902db31608079ed70}")
+            .baseUrl("http://api.openweathermap.org/data/2.5/air_pollution/forecast?lat=$lat&lon=$lon&appid=28fe549a5ff3df3902db31608079ed70")
             .addConverterFactory(GsonConverterFactory.create())
             .build()
         val service = retrofit.create(WeatherService::class.java)
@@ -201,8 +178,21 @@ class SelectCity : AppCompatActivity() {
 
             override fun onFailure(call: Call<AqiResponse>, t: Throwable) {
                 t.printStackTrace()
+                Log.e("WeatherService", "Error fetching AQI data", t)
             }
         })
         }
 
 }
+
+//        if (ContextCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION)
+//            != PackageManager.PERMISSION_GRANTED
+//        ) {
+//            ActivityCompat.requestPermissions(
+//                this,
+//                arrayOf(Manifest.permission.ACCESS_FINE_LOCATION),
+//                LOCATION_PERMISSION_REQUEST_CODE
+//            )
+//        } else {
+//            startLoading()
+//        }

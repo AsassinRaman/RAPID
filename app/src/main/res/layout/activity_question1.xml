@@ -5,30 +5,49 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <!--    <TextView-->
-    <!--        android:id="@+id/questionTextView"-->
-    <!--        android:layout_width="wrap_content"-->
-    <!--        android:layout_height="wrap_content"-->
-    <!--        android:layout_marginTop="300dp"-->
-    <!--        android:text="Are you feeling Itchy Node?"-->
-    <!--        android:textSize="24sp"-->
-    <!--        android:textStyle="bold"-->
-    <!--        app:layout_constraintEnd_toEndOf="parent"-->
-    <!--        app:layout_constraintHorizontal_bias="0.534"-->
-    <!--        app:layout_constraintStart_toStartOf="parent"-->
-    <!--        app:layout_constraintTop_toTopOf="parent" />-->
-
     <RelativeLayout
         android:id="@+id/relativeLayout"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:background="#FAFAFA"
+        android:background ="@drawable/footer"
         android:padding="16dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         tools:context=".MainActivity">
+
+        <!-- Horizontal Guideline for top margin -->
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline_top"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintGuide_begin="350dp"
+            android:orientation="horizontal"/>
+
+        <!-- Horizontal Guideline for bottom margin -->
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline_bottom"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintGuide_end="300dp"
+            android:orientation="horizontal"/>
+
+        <!-- Vertical Guideline for start margin -->
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline_start"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintGuide_begin="132dp"
+            android:orientation="vertical"/>
+
+        <!-- Vertical Guideline for end margin -->
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline_end"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintGuide_end="132dp"
+            android:orientation="vertical"/>
 
         <TextView
             android:id="@+id/slider_label"
@@ -40,10 +59,10 @@
             android:layout_alignParentBottom="true"
             android:layout_marginStart="85dp"
             android:layout_marginTop="210dp"
-            android:layout_marginEnd="72dp"
+            android:layout_marginEnd="55dp"
             android:layout_marginBottom="460dp"
-            android:text="Are You Feeling Itchy Nose?"
-            android:textColor="#333"
+            android:text="Are You Having Itchy Nose?"
+            android:textColor="#FFFFFF"
             android:textSize="18sp" />
 
         <com.google.android.material.slider.Slider
@@ -75,7 +94,7 @@
                 android:layout_weight="1"
                 android:text="None"
                 android:textAlignment="center"
-                android:textColor="#333"
+                android:textColor="#FFFFFF"
                 android:textSize="14sp" />
 
             <TextView
@@ -84,7 +103,7 @@
                 android:layout_weight="1"
                 android:text="Mild"
                 android:textAlignment="center"
-                android:textColor="#333"
+                android:textColor="#FFFFFF"
                 android:textSize="14sp" />
 
             <TextView
@@ -93,14 +112,14 @@
                 android:layout_weight="1"
                 android:text="Severe"
                 android:textAlignment="center"
-                android:textColor="#333"
+                android:textColor="#FFFFFF"
                 android:textSize="14sp" />
 
         </LinearLayout>
 
         <Button
             android:id="@+id/button_next"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_alignParentStart="true"
             android:layout_alignParentTop="true"
@@ -111,7 +130,10 @@
             android:layout_marginEnd="132dp"
             android:layout_marginBottom="300dp"
             android:text="Next"
-            app:layout_constraintEnd_toEndOf="parent" />
+            app:layout_constraintStart_toEndOf="@id/guideline_start"
+            app:layout_constraintEnd_toStartOf="@id/guideline_end"
+            app:layout_constraintTop_toBottomOf="@id/guideline_top"
+            app:layout_constraintBottom_toTopOf="@id/guideline_bottom"/>
 
         <ImageView
             android:id="@+id/imageView"
